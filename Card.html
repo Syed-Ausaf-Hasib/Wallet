@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ausaf's Wallet</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Banner Styles */
+        #banner {
+            width: 100%;
+            background-color: #1e1e1e;
+            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .category {
+            padding: 12px 25px;
+            margin: 0 10px;
+            background: linear-gradient(135deg, #3b3b3b, #1e1e1e);
+            border-radius: 30px;
+            color: #f0f0f0;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+        }
+
+        .category:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+            transform: translateY(-4px);
+        }
+
+        /* Card Container Styles */
+        #cardSection {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .card-container {
+            text-align: center; /* Center the title */
+        }
+
+        .card {
+            width: 300px;  /* Adjust width for mobile */
+            height: 200px; /* Adjust height for mobile */
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            perspective: 1000px; /* Adding perspective for the flip effect */
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s; /* Animation duration */
+            transform-style: preserve-3d; /* Preserve 3D for the inner elements */
+        }
+
+        .card.flipped .card-inner {
+            transform: rotateY(180deg); /* Flip effect */
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure images fit nicely */
+            border-radius: 15px;
+            backface-visibility: hidden; /* Hides the back face */
+        }
+
+        .card-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: rotateY(180deg); /* Rotate the back image */
+            backface-visibility: hidden; /* Hides the front face */
+        }
+
+        /* Lock Icon Overlay for Bank Cards */
+        .lock-overlay {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.7); /* Black background with transparency */
+            border-radius: 50%; /* Circular background */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Shadow effect */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20; /* Ensures it stays on top */
+        }
+
+        .lock-overlay img {
+            width: 24px; /* Lock icon size */
+            height: 24px;
+        }
+
+        /* Title Styles */
+        .card-title {
+            margin-top: 10px; /* Space above title */
+            font-size: 14px; /* Title font size */
+            color: #f0f0f0; /* Title color */
+            text-transform: uppercase; /* Title transform */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Stylish Banner Section with Categories -->
+    <div id="banner">
+        <div class="category">ID Cards</div>
+    </div>
+
+    <!-- Card Section -->
+    <div id="cardSection">
+        <!-- Card 1 -->
+        <div class="card-container">
+            <div class="card">
+                <div class="card-inner">
+                    <img src="cards/passport1.jpg" alt="Card 1" class="card-image" data-back="cards/passport2.jpg">
+                    <img src="cards/passport2.jpg" alt="Card Back 1" class="card-back" data-back="cards/passport1.jpg">
+                </div>
+            </div>
+            <div class="card-title">Passport</div> <!-- Card Title -->
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card-container">
+            <div class="card">
+                <div class="card-inner">
+                    <img src="cards/Student1.jpg" alt="Card 2" class="card-image" data-back="cards/Student2.jpg">
+                    <img src="cards/Student2.jpg" alt="Card Back 2" class="card-back" data-back="cards/Student1.jpg">
+                </div>
+            </div>
+            <div class="card-title">Student ID</div> <!-- Card Title -->
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card-container">
+            <div class="card">
+                <div class="card-inner">
+                    <img src="cards/PAN1.jpg" alt="Card 3" class="card-image" data-back="cards/PAN2.jpg">
+                    <img src="cards/PAN2.jpg" alt="Card Back 3" class="card-back" data-back="cards/PAN1.jpg">
+                </div>
+            </div>
+            <div class="card-title">PAN Card</div> <!-- Card Title -->
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card-container">
+            <div class="card">
+                <div class="card-inner">
+                    <img src="cards/ADHAAR1.jpg" alt="Card 4" class="card-image" data-back="cards/ADHAAR2.jpg">
+                    <img src="cards/ADHAAR2.jpg" alt="Card Back 4" class="card-back" data-back="cards/ADHAAR1.jpg">
+                </div>
+            </div>
+            <div class="card-title">Adhaar Card</div> <!-- Card Title -->
+        </div>
+    </div>
+
+    <div id="banner">
+        <div class="category">Bank Cards</div>
+    </div>
+    
+    <!-- Second Card Section -->
+    <div id="cardSection">
+        <!-- Bank Card 1 -->
+        <div class="card-container">
+            <div class="card">
+                <div class="lock-overlay">
+                    <img src="https://img.icons8.com/material-outlined/24/ffffff/lock--v1.png" alt="Lock Icon"> <!-- Lock Icon -->
+                </div>
+                <div class="card-inner">
+                    <a href="https://drive.google.com/file/d/1rLAVHygBepBJ0TN--wbCCdu_EB83KrjP/view?usp=drive_link" target="_blank"> <!-- Embed clickable link -->
+                        <img src="cards/ICICI1.jpg" alt="Bank Card 1" class="card-image" data-back="cards/ICICI2.jpg">
+                    </a>
+                    <img src="cards/ICICI2.jpg" alt="Card Back 1" class="card-back" data-back="cards/ICICI1.jpg">
+                </div>
+            </div>
+            <div class="card-title">ICICI</div> <!-- Card Title -->
+        </div>
+
+        <!-- Bank Card 2 -->
+        <div class="card-container">
+            <div class="card">
+                <div class="lock-overlay">
+                    <img src="https://img.icons8.com/material-outlined/24/ffffff/lock--v1.png" alt="Lock Icon"> <!-- Lock Icon -->
+                </div>
+                <div class="card-inner">
+                    <a href="https://drive.google.com/file/d/1QAFe4YRQKWQfwysRdISD8qTDjqN7T2jU/view?usp=sharing" target="_blank"> <!-- Embed clickable link -->
+                        <img src="cards/SBI1.jpg" alt="Bank Card 2" class="card-image" data-back="cards/SBI2.jpg">
+                    </a>
+                    <img src="cards/SBI2.jpg" alt="Card Back 2" class="card-back" data-back="cards/SBI1.jpg">
+                </div>
+            </div>
+            <div class="card-title">SBI</div> <!-- Card Title -->
+        </div>
+
+        <!-- Bank Card 2 -->
+        <div class="card-container">
+            <div class="card">
+                <div class="lock-overlay">
+                    <img src="https://img.icons8.com/material-outlined/24/ffffff/lock--v1.png" alt="Lock Icon"> <!-- Lock Icon -->
+                </div>
+                <div class="card-inner">
+                    <a href="https://drive.google.com/file/d/1al2NWLc-2walutRPLEWAjK_d2mWwpZuQ/view?usp=sharing" target="_blank"> <!-- Embed clickable link -->
+                        <img src="cards/U1.jpg" alt="Bank Card 2" class="card-image" data-back="cards/U2.jpg">
+                    </a>
+                    <img src="cards/U2.jpg" alt="Card Back 2" class="card-back" data-back="cards/U1.jpg">
+                </div>
+            </div>
+            <div class="card-title">Union Bank</div> <!-- Card Title -->
+        </div>
+
+    </div>
+
+    <script>
+        // Add click functionality to all cards
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            const innerCard = card.querySelector('.card-inner');
+
+            const handleFlip = () => {
+                // Trigger the flip animation
+                card.classList.toggle('flipped');
+
+                // Delay the image swap to match the animation duration
+                const frontImage = card.querySelector('.card-image');
+                const backImage = card.querySelector('.card-back');
+
+                // Set the delay time in milliseconds
+                const delayTime = 400; // Adjust this to match your animation duration
+
+                // Use a timeout to delay the image swap
+                setTimeout(() => {
+                    // Check current state to toggle images
+                    if (card.classList.contains('flipped')) {
+                        frontImage.src = backImage.src; // Set front image to back image
+                    } else {
+                        backImage.src = frontImage.src; // Set back image to front image
+                    }
+                }, delayTime);
+            };
+
+            // Add event listeners for click and touch
+            card.addEventListener('click', handleFlip);
+            card.addEventListener('touchstart', handleFlip);
+        });
+    </script>
+</body>
+</html>
