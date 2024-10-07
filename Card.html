@@ -195,12 +195,12 @@
         <div class="card-container">
             <div class="card">
                 <div class="lock-overlay">
-                    <img src="https://img.icons8.com/material-outlined/24/ffffff/lock--v1.png" alt="Lock Icon"> <!-- Lock Icon -->
+                    <a href="https://drive.google.com/file/d/1rLAVHygBepBJ0TN--wbCCdu_EB83KrjP/view?usp=drive_link" target="_blank"> <!-- Embed clickable link in lock -->
+                        <img src="https://img.icons8.com/material-outlined/24/ffffff/lock--v1.png" alt="Lock Icon"> <!-- Lock Icon -->
+                    </a>
                 </div>
                 <div class="card-inner">
-                    <a href="https://drive.google.com/file/d/1rLAVHygBepBJ0TN--wbCCdu_EB83KrjP/view?usp=drive_link" target="_blank"> <!-- Embed clickable link -->
-                        <img src="cards/ICICI1.jpg" alt="Bank Card 1" class="card-image" data-back="cards/ICICI2.jpg">
-                    </a>
+                    <img src="cards/ICICI1.jpg" alt="Bank Card 1" class="card-image" data-back="cards/ICICI2.jpg">
                     <img src="cards/ICICI2.jpg" alt="Card Back 1" class="card-back" data-back="cards/ICICI1.jpg">
                 </div>
             </div>
@@ -211,29 +211,29 @@
         <div class="card-container">
             <div class="card">
                 <div class="lock-overlay">
-                    <img src="https://img.icons8.com/material-outlined/24/ffffff/lock--v1.png" alt="Lock Icon"> <!-- Lock Icon -->
+                    <a href="https://drive.google.com/file/d/1QAFe4YRQKWQfwysRdISD8qTDjqN7T2jU/view?usp=sharing" target="_blank"> <!-- Embed clickable link in lock -->
+                        <img src="https://img.icons8.com/material-outlined/24/ffffff/lock--v1.png" alt="Lock Icon"> <!-- Lock Icon -->
+                    </a>
                 </div>
                 <div class="card-inner">
-                    <a href="https://drive.google.com/file/d/1QAFe4YRQKWQfwysRdISD8qTDjqN7T2jU/view?usp=sharing" target="_blank"> <!-- Embed clickable link -->
-                        <img src="cards/SBI1.jpg" alt="Bank Card 2" class="card-image" data-back="cards/SBI2.jpg">
-                    </a>
+                    <img src="cards/SBI1.jpg" alt="Bank Card 2" class="card-image" data-back="cards/SBI2.jpg">
                     <img src="cards/SBI2.jpg" alt="Card Back 2" class="card-back" data-back="cards/SBI1.jpg">
                 </div>
             </div>
             <div class="card-title">SBI</div> <!-- Card Title -->
         </div>
 
-        <!-- Bank Card 2 -->
+        <!-- Bank Card 3 -->
         <div class="card-container">
             <div class="card">
                 <div class="lock-overlay">
-                    <img src="https://img.icons8.com/material-outlined/24/ffffff/lock--v1.png" alt="Lock Icon"> <!-- Lock Icon -->
+                    <a href="https://drive.google.com/file/d/1al2NWLc-2walutRPLEWAjK_d2mWwpZuQ/view?usp=sharing" target="_blank"> <!-- Embed clickable link in lock -->
+                        <img src="https://img.icons8.com/material-outlined/24/ffffff/lock--v1.png" alt="Lock Icon"> <!-- Lock Icon -->
+                    </a>
                 </div>
                 <div class="card-inner">
-                    <a href="https://drive.google.com/file/d/1al2NWLc-2walutRPLEWAjK_d2mWwpZuQ/view?usp=sharing" target="_blank"> <!-- Embed clickable link -->
-                        <img src="cards/U1.jpg" alt="Bank Card 2" class="card-image" data-back="cards/U2.jpg">
-                    </a>
-                    <img src="cards/U2.jpg" alt="Card Back 2" class="card-back" data-back="cards/U1.jpg">
+                    <img src="cards/U1.jpg" alt="Bank Card 3" class="card-image" data-back="cards/U2.jpg">
+                    <img src="cards/U2.jpg" alt="Card Back 3" class="card-back" data-back="cards/U1.jpg">
                 </div>
             </div>
             <div class="card-title">Union Bank</div> <!-- Card Title -->
@@ -246,27 +246,30 @@
         const cards = document.querySelectorAll('.card');
         cards.forEach(card => {
             const innerCard = card.querySelector('.card-inner');
+            let hasFlipped = false; // Track if the card has already flipped
 
             const handleFlip = () => {
-                // Trigger the flip animation
-                card.classList.toggle('flipped');
+                if (!hasFlipped) {
+                    // Trigger the flip animation
+                    card.classList.toggle('flipped');
 
-                // Delay the image swap to match the animation duration
-                const frontImage = card.querySelector('.card-image');
-                const backImage = card.querySelector('.card-back');
+                    // Delay the image swap to match the animation duration
+                    const frontImage = card.querySelector('.card-image');
+                    const backImage = card.querySelector('.card-back');
 
-                // Set the delay time in milliseconds
-                const delayTime = 400; // Adjust this to match your animation duration
+                    // Set the delay time in milliseconds
+                    const delayTime = 400; // Adjust this to match your animation duration
 
-                // Use a timeout to delay the image swap
-                setTimeout(() => {
-                    // Check current state to toggle images
-                    if (card.classList.contains('flipped')) {
-                        frontImage.src = backImage.src; // Set front image to back image
-                    } else {
-                        backImage.src = frontImage.src; // Set back image to front image
-                    }
-                }, delayTime);
+                    // Use a timeout to delay the image swap
+                    setTimeout(() => {
+                        // Check current state to toggle images
+                        if (card.classList.contains('flipped')) {
+                            frontImage.src = backImage.src; // Set front image to back image
+                        }
+                    }, delayTime);
+
+                    hasFlipped = true; // Prevent further flipping
+                }
             };
 
             // Add event listeners for click and touch
